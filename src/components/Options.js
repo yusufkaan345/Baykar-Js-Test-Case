@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/options.css'
 const Options = ({ options, onSelectOption, isAnswerable }) => {
+
+   {/*Seçeneklerin hangi şık olduğunu belirleyen fonksiyon*/} 
     const getOptionLabel = (index) => {
         switch (index % 4) {
             case 0:

@@ -5,6 +5,7 @@ import Timer from './components/Timer.js';
 import Results from './components/Results.js';
 import './css/styles.css';
 
+  {/*Verilerin alındığı fonksiyon*/ }
 const fetchQuestions = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   const questions = await response.json();
@@ -19,6 +20,8 @@ const App = () => {
   const [isAnswerable, setIsAnswerable] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
 
+
+  {/*Soruların güncellendiği ilk açılış anı*/ }
   useEffect(() => {
     const uploadQuestions = async () => {
       const fetchedQuestions = await fetchQuestions();
@@ -27,7 +30,9 @@ const App = () => {
     uploadQuestions();
   }, []);
 
-  useEffect(() => {
+  
+  {/*Zaman ayarlarının yapıldığı kısım*/ }
+useEffect(() => {
     if (time > 0 && currentQuestionIndex < 10) {
       const timerId = setInterval(() => {
         settime(prevTime => {
@@ -48,6 +53,7 @@ const App = () => {
     showNextQuestion();
   };
 
+  {/*Kullanıcı yanıtlarını kaydeden fonksiyon*/ }
   const handleSelectOption = (option) => {
     if (isAnswerable) {
       setUserAnswers(prevAnswers => [...prevAnswers, option]);
@@ -55,24 +61,25 @@ const App = () => {
     }
   };
 
+  {/*Süre dolduğunda bir sonraki soruya geçen fonksiyon*/ }
   const showNextQuestion = () => {
     if (currentQuestionIndex <= 9) {
       settime(30);
       setIsAnswerable(false);
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
-  }
+    }
   };
 
-  if (currentQuestionIndex >= 10 ) {
+  if (currentQuestionIndex >= 10) {
     return <Results userAnswers={userAnswers} />;
   }
 
   return (
     <div>
       <div id="question-card">
-        {(questions.length > 0 && currentQuestionIndex<=10) && (
+        {(questions.length > 0 && currentQuestionIndex <= 10) && (
           <>
-             <button className='question-number'> Question : {currentQuestionIndex +1} </button>
+            <button className='question-number'> Question : {currentQuestionIndex + 1} </button>
             <Question question={questions[currentQuestionIndex]} />
             <Options
               options={questions[currentQuestionIndex].body.split('\n').slice(0, 4)}

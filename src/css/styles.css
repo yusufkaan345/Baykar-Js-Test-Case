@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#question-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 500px;
+}
+
+
+#timer {
+    margin-top: 20px;
+}
+
+.question-number{
+    background-color: rgb(195, 221, 221);
+    border-radius: 5px;
+    border: none;
+    width: 130px;
+    height: 45px;
+}
+
+

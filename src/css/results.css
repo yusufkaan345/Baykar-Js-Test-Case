@@ -1,0 +1,9 @@
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table th, #results-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
